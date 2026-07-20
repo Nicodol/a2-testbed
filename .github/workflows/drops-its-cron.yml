@@ -1,0 +1,14 @@
+name: drops-its-cron
+# COMMENCE avec un cron. Le test : plus tard, tu EDITES ce fichier pour RETIRER la partie schedule
+# (ne garder que workflow_dispatch). Cronwake doit alors arreter de surveiller ce job et te prevenir
+# une fois ("monitoring stopped: the workflow no longer has a cron schedule"), au lieu de le laisser
+# deriver en fausse alerte "missed". C'est le comportement "cron_removed" ajoute recemment.
+on:
+  schedule:
+    - cron: '45 * * * *'
+  workflow_dispatch:
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "retire le bloc schedule plus tard pour tester cron_removed"

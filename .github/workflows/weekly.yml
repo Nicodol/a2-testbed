@@ -1,0 +1,11 @@
+name: weekly
+# Cron rare (chaque lundi 9h). Sert a tester la "couverture jour zero" : Cronwake surveille ce job
+# AVANT meme qu'il ait tourne une seule fois, et applique une grace adaptee a une longue cadence.
+on:
+  schedule:
+    - cron: '0 9 * * 1'
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "run hebdomadaire rare"

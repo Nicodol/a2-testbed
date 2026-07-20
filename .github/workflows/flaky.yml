@@ -1,0 +1,14 @@
+name: flaky
+# Echoue une fois sur deux (selon la minute). Sert a tester que Cronwake n'alerte PAS sur un echec
+# isole, mais seulement au N-ieme echec CONSECUTIF, et qu'il envoie "runs passing again" au retour au vert.
+on:
+  schedule:
+    - cron: '*/10 * * * *'
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          m=$(date -u +%M)
+          if [ $((10#$m % 2)) -eq 0 ]; then echo "cette execution echoue"; exit 1; fi
+          echo "cette execution reussit"

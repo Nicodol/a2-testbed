@@ -1,0 +1,10 @@
+name: nominal-hourly
+# Un cron horaire tout ce qu'il y a de normal, qui reussit. Sert de reference "ok".
+on:
+  schedule:
+    - cron: '17 * * * *'
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "healthy hourly run at $(date -u)"

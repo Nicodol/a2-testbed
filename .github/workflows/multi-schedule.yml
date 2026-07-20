@@ -1,0 +1,12 @@
+name: multi-schedule
+# Un seul workflow avec DEUX crons. Sert a tester que Cronwake gere plusieurs horaires sur le meme
+# job (il doit attendre chacun des deux creneaux, pas seulement un).
+on:
+  schedule:
+    - cron: '5 * * * *'
+    - cron: '35 * * * *'
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "deux horaires sur un seul workflow"

@@ -1,0 +1,11 @@
+name: always-fails
+# Part a l'heure mais se termine TOUJOURS en echec. Sert a tester l'alerte "run en echec" (opt-in),
+# qui est differente d'un run manque : ici le run a bien eu lieu, mais il a plante.
+on:
+  schedule:
+    - cron: '*/15 * * * *'
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "je pars a l'heure"; exit 1

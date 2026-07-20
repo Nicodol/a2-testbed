@@ -1,0 +1,11 @@
+name: disable-me
+# A DESACTIVER A LA MAIN dans l'onglet Actions de GitHub. Sert a tester la detection du "silencieusement
+# desactive" : GitHub coupe un workflow sans prevenir, et Cronwake doit le voir via l'API et alerter.
+on:
+  schedule:
+    - cron: '*/20 * * * *'
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "desactive-moi a la main dans l'onglet Actions"

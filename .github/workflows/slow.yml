@@ -1,0 +1,11 @@
+name: slow
+# Tourne 3 minutes. Sert a tester l'alerte "slow-job" (opt-in) : un cron qui part a l'heure mais met
+# trop longtemps. A regler dans Cronwake avec un seuil de duree en dessous de 3 min pour le voir.
+on:
+  schedule:
+    - cron: '*/30 * * * *'
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "je simule un job lent"; sleep 180

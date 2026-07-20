@@ -1,0 +1,13 @@
+name: daily-dispatchable
+# Cron quotidien QUI a aussi un bouton "Run workflow" (workflow_dispatch). Sert a tester que Cronwake
+# suit bien le cron quotidien ET que tes declenchements manuels ne le perturbent pas (ils ne comptent
+# pas comme un run planifie). Pratique pour provoquer un run a la demande.
+on:
+  schedule:
+    - cron: '30 6 * * *'
+  workflow_dispatch:
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "quotidien, et lancable a la demande"
